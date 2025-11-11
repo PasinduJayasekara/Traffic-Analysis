@@ -110,7 +110,6 @@ class TrafficAnalysisApp:
         self.root.title("Traffic Analysis System")
         self.root.geometry("600x500")
 
-        # Labels
         tk.Label(self.root, text="Traffic Analysis System", font=("Arial", 16, "bold")).pack(pady=10)
 
         frame = tk.Frame(self.root)
@@ -144,13 +143,11 @@ class TrafficAnalysisApp:
             data = process_csv_data(file_path)
             outputs = display_outcomes(data, f"traffic_data{day:02d}{month:02d}{year}.csv")
 
-            # display results in text box
             self.result_box.delete(1.0, tk.END)
             self.result_box.insert(tk.END, "Traffic Analysis Results:\n\n")
             for k, v in outputs.items():
                 self.result_box.insert(tk.END, f"{k}: {v}\n")
 
-            # prepare histogram
             traffic_data = {"Elm Avenue/Rabbit Road": defaultdict(int), "Hanley Highway/Westway": defaultdict(int)}
             for row in data:
                 hour = row["timeOfDay"].split(":")[0]
